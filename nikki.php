@@ -15,9 +15,25 @@ try {
     $dbh = new PDO($dsn);
     
     // この下にプログラムを書きましょう。
-    $_POST["password"]=="secret" 
-                <action
-    else <form method="POST" action="">
+    $password = $_POST["password"];
+    print $password;
+    if  ($password == "secret"){
+       print"成功";
+       $re = $dbh->query("SELECT * FROM nikki");
+    print '<div class="flex-container">';
+        while($kekka = $re->fetch()) {
+       print "<div class='box'>";
+       print $kekka[0];
+       print " | ";
+       print $kekka[1];
+       print " | ";
+       print $kekka[2];
+       print "<br>";
+       print "</div>";
+       
+   } else {
+       print "パスワードが違います";
+   }
 } catch (PDOException $e) {
     echo 'Connection failed: ' . $e->getMessage();
     

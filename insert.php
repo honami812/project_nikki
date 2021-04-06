@@ -13,10 +13,11 @@ require_once('db_info.php');
 
 try { 
     $dbh = new PDO($dsn);
-    
-    // この下にプログラムを書きましょう。
+    $dbh = setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+      //この下にプログラムを書きましょう。
 
-} catch (PDOException $e) {
+    } catch (PDOException $e) {
+
     echo 'Connection failed: ' . $e->getMessage();
 }
 

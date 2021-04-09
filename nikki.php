@@ -22,17 +22,24 @@ try {
        $re = $dbh->query("SELECT * FROM nikki");
     print '<div class="flex-container">';
         while($kekka = $re->fetch()) {
-       print "<div class='box'>";
-       print $kekka[0];
-       print " | ";
-       print $kekka[1];
-       print " | ";
-       print $kekka[2];
-       print "<br>";
-       print "</div>";
-       
+            print "<div class='box'>";
+            print $kekka[0];
+            print "<br>";
+            print "</div>";
+            print $kekka[2];
+            print "<br>";
+            print "</div>";
+            print $kekka[1];
+            print " | ";
+            print $kekka[3];
+            
+        }
    } else {
        print "パスワードが違います";
+       print "<br>";
+       print "</br>";
+       print "<a href='index.html'>戻る</a>";
+ 
    }
 } catch (PDOException $e) {
     echo 'Connection failed: ' . $e->getMessage();

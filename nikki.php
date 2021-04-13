@@ -3,7 +3,22 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
+        .flex-container {
+    display: flex;
+    justify-content: right; /* 真ん中に箱を配置する。右の場合は'right' */
+}
+        .flex-container {
+            background-color: peru;    
+        }
+
+        .box {
+            
+            margin: 25px;
+            padding: 25px;
+            border: 5px solid black;
+        }
     </style>
+    
 </head>
 <body>
 
@@ -18,31 +33,50 @@ try {
     $password = $_POST["password"];
     print $password;
     if  ($password == "secret"){
-       print"成功";
+       
        $re = $dbh->query("SELECT * FROM nikki");
     print '<div class="flex-container">';
+    print "<div class='box'>";
         while($kekka = $re->fetch()) {
-            print "<div class='box'>";
+            
+        
             print $kekka[0];
             print "<br>";
-            print "</div>";
             print $kekka[2];
             print "<br>";
-            print "</div>";
             print $kekka[1];
             print " | ";
             print $kekka[3];
-            
         }
-   } else {
+        print "</div>";
+        print "<div class='box'>";
+            
+       
+           print  "<form method="POST" action="nikki.php">";
+            print "パスワードを入力してください<br><input type="text" name="password">"
+                 <input type="submit" value="入力">
+         </form>
+        }
+        print "form";
+        print "</div>";
+        print '</div>';
+        
+        
+    else {
        print "パスワードが違います";
        print "<br>";
        print "</br>";
        print "<a href='index.html'>戻る</a>";
- 
+
+       $name = $_POST["namae"];
+     $message = $_POST["message"];
+    
    }
-} catch (PDOException $e) {
+  
+ 
+}    catch (PDOException $e) { 
     echo 'Connection failed: ' . $e->getMessage();
+    
     
 }
 
